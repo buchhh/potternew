@@ -2,7 +2,7 @@
 $str = file_get_contents('../config/config.json');
 $json = json_decode($str, true);
 
-$H = $json['database']['hostname'];
+$H = $json['database']['hostname'].':'.$json['database']['post'];
 $U = $json['database']['username'];
 $P = $json['database']['password'];
 $D = $json['database']['database'];

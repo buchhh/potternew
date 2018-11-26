@@ -1,8 +1,9 @@
 {
     "database": {
-        "hostname": "localhost",
+        "hostname": "127.0.0.1",
+        "post": "3306",
         "username": "root",
-        "password": "12345678",
+        "password": "",
         "database": "potter"
     },
     "project_name": "potter"

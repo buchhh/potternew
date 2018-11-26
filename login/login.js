@@ -62,16 +62,13 @@ app.controller('loginController', function ($scope, $http, $location, $route, $r
     $scope.statusLogin = '';
     $scope.statusL == 'unset';
     $scope.host = $location.$$absUrl;
-    var res = $location.$$absUrl.split("/");
-    $scope.host = res[0] + '/' + res[1] + '/' + res[2] + '/' + res[3] + '/';
-    // console.log($scope.host);
-    
-    // http://172.32.2.244/pch/potter/login/index.html
-    // debugger
+    // var res = $location.$$absUrl.split("/");
+    // $scope.host = $location.$$protocol + '://' + $location.$$host;
+    // $scope.host = res[0] + '/' + res[1] + '/' + res[2] + '/' + res[3] + '/';
     $scope.submit = function () {
         var user = $scope.user;
         var pwd = $scope.pwd;
-        if (user && pwd) {
+        if (user && pwd) { 
             sql = "SELECT * FROM`member` WHERE`member_user` = '" + user + "' and`member_pwd` = '" + pwd + "' limit 1";
             query.sql(sql).then(function (response) {
                 if (response.data && response.status == 200) {
@@ -82,7 +79,11 @@ app.controller('loginController', function ($scope, $http, $location, $route, $r
                     sessionUser = JSON.parse($window.sessionStorage.getItem("user"));
                     $scope.username = sessionUser && sessionUser.member_user ? sessionUser.member_user : '';
                     $scope.MsgName = "เข้าสู่ระบบเรียบร้อย";
-                    window.location.href = $scope.host;
+                    $http.get('../config/config.json').then(function (res) {
+                        var host = $location.$$protocol + '://' + $location.$$host + '/' + res.data.project_name;
+                        window.location.href = host;
+                        console.log(host);
+                    });
                 } else {
                     $scope.statusLogin = 'false';
                     $scope.messageError = 'คุณใส่ ชื่อผู้ใช้ หรือ รหัสผ่าน ไม่ถูกต้อง';
@@ -102,7 +103,6 @@ app.controller('loginController', function ($scope, $http, $location, $route, $r
             $scope.submit();
         }
     }
-
 
     $scope.checkSession = function () {
         sessionUser = JSON.parse($window.sessionStorage.getItem("user"));
