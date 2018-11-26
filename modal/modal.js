@@ -86,6 +86,12 @@ app.controller('ModalController', function ($scope, $uibModalInstance, $interval
         $scope.sumE = JSON.parse($window.sessionStorage.getItem("countMax"));
     }
 
+    $(document).ready(function () {
+        $("div").click(function () {
+            $window.sessionStorage.removeItem("newData");
+        });
+    });
+    
     $scope.modal = true;
     $scope.showId = JSON.parse($window.sessionStorage.getItem("showId"));
     $scope.cancel = function () {
