@@ -97,13 +97,13 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
                         <input ng-disabled="chkRadio=='name'" type="text" class="form-control" ng-model="id"
-                                ng-keypress="checkKeyId($event)">
+                                ng-keypress="checkKeyId($event)" placeholder="ใส่รหัสพนักงาน">
                         <p ng-if="Msg" style="color:red">{{Msg}}</p>
                 </div>
                 <div class="col-md-3">
                         <input ng-disabled="chkRadio=='id'" type="text" ng-model="ngModelOptionsSelected"
                                 ng-model-options="modelOptions" uib-typeahead="state for state in nameE | filter:$viewValue | limitTo:8"
-                                class="form-control" ng-keypress="checkKeyName($event)">
+                                class="form-control" ng-keypress="checkKeyName($event)" placeholder="ใส่ชื่อพนักงาน">
                 </div>
                 <div class="col-md-3">
                         <!-- <input type="checkbox" ng-model="urgent"> ด่วน -->
@@ -115,8 +115,8 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4"><input type="text" class="form-control" ng-model="showName" disabled></div>
                 <div class="col-md-4"> 
-                <a href="" ng-click="urgent = true"><img ng-show="!urgent" src="img/5.jpg" width="10px" alt=""></a>
-                <a href="" ng-click="urgent = false"><img ng-show="urgent" src="img/6.jpg" width="10px" alt=""></a>
+                <a href="" ng-click="urgent = true"> ด่วน : <img ng-show="!urgent" src="img/10.jpg" width="40px" alt=""></a>
+                <a href="" ng-click="urgent = false"><img ng-show="urgent" src="img/11.png" width="40px" alt=""></a>
                 </div>
         </div>
         <br>

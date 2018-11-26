@@ -1,22 +1,23 @@
 <link rel="stylesheet" href="modal/css.css">
 <div id="success" class="modal-header">
-    <h3 class="modal-title">ยืนยันข้อมูลการจอง</h3>
+    <h3 class="modal-title" style="text-align:center;">ยืนยันข้อมูลการจอง</h3>
 </div>
 <div class="modal-body">
     <div class="row">
         <div class="col-md-12 br-top">
-            <div class="col-md-3"><input type="text" class="form-control" ng-model="name" placeholder="ใส่รหัสพนักงาน" ng-keypress="checkKey($event)"></div>
+            <div class="col-md-4"><input type="text" class="form-control" ng-model="name" placeholder="ใส่รหัสพนักงาน"
+                    ng-keypress="checkKey($event)"></div>
             <div class="col-md-3"><button class="btn btn-info" ng-click="searchName()">ค้นหา</button></div>
-            <div class="col-md-6">
-                <input type="text" ng-model="ngModelOptionsSelected" ng-model-options="modelOptions" uib-typeahead="state for state in nameE | filter:$viewValue | limitTo:8" class="form-control">
+            <div class="col-md-5">
             </div>
-        </div>  
-        <div class="col-md-12 br-top">
-                <input type="text" class="form-control" ng-model="showName" disabled>
+        </div>
+        <div class="col-md-6 br-top">
+            <input type="text" class="form-control" ng-model="showName" disabled>
+            <div class="col-md-6"></div>
         </div>
     </div>
 </div>
 <div class="modal-footer center">
-        <button ng-click="save()" class="btn btn-success">ยืนยัน</button>
+    <button ng-click="save()" class="btn btn-success">ยืนยัน</button>
     <!-- <button class="btn btn-success" type="button" ng-click="cancel()">ตกลง</button> -->
 </div>

@@ -1,9 +1,19 @@
 <link rel="stylesheet" href="modal/css.css">
 <div id="success" class="modal-header">
-    <h2 class="modal-title">คิว</h2>
+    <h2 class="modal-title" style="text-align:center;">PATTAYA CITY HOTPITAL</h2>
 </div>
-<div class="modal-body" >
-    <h1>{{sumE}}</h1>
+<div class="modal-body">
+    <div class="row" style="text-align:center;">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <h1>{{sumE}}</h1>
+        </div>
+        <div class="col-md-5"></div>
+    </div>
+    <div class="col-md-12" style="text-align:center;">
+        <h3><p class="label label-danger"># มีข้อมูลที่ยังไม่ได้ทำรายการ</p></h3>
+    </div>
+    <br><br><br>
 </div>
 <div class="modal-footer center">
     <button class="btn btn-success" type="button" ng-click="clearData(userid,count)">ตกลง</button>
