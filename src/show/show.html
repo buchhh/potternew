@@ -26,7 +26,7 @@
                             <th><a ng-click="getData('S.recname','','')">ชื่อผู้รับรถ</a></th>
                             <th><a ng-click="getData('S.jobname','','')">ชื่อผู้ปฎิบัติงาน</a></th>
                             <th><a ng-click="getData('J.status_name','','')">สถานะ</a></th>
-                            <th ng-if="usernameType == 'Admin'"><a ng-click="getData('S.status','','')">อัพเดท</a></th>
+                            <th ng-if="usernameType == 'admin'"><a ng-click="getData('S.status','','')">อัพเดท</a></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,7 +43,7 @@
                             <td>{{nameSearch(item.recname)}}</td>
                             <td>{{nameSearch(item.jobname)}}</td>
                             <td>{{item.status_name}}</td>
-                            <td ng-if="usernameType == 'Admin'">
+                            <td ng-if="usernameType == 'admin'">
                                 <div ng-if="item.status == '1'"><button class="btn btn-primary btn-sm" ng-click="subStatus(item.job_id)">ยืนยันการจอง</button></div>
                                 <div ng-if="item.status == '2'"><button class="btn btn-warning btn-sm" ng-click="finStatus(item.job_id)">รับผู้ป่วย</button></div>
                                 <div ng-if="item.status == '3'"><button class="btn btn-success btn-sm" ng-click="success(item.job_id)">เรียบร้อย</button></div>

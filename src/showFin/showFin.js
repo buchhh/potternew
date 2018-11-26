@@ -1,5 +1,6 @@
 app.controller('showFinController', function ($scope, $http, $location, $route, $routeParams, query, modal) {
     // $scope.id = $routeParams.id;
+    $scope.api = 'showFin';
     $scope.dataSet = {};
     $scope.dataSet.name = '';
     $scope.dataSet.test = '';

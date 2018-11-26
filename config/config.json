@@ -3,7 +3,7 @@
         "hostname": "localhost",
         "post": "3306",
         "username": "root",
-        "password": "",
+        "password": "123456789",
         "database": "potter"
     },
     "project_name": "potter"

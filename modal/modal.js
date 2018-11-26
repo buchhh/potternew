@@ -67,7 +67,8 @@ app.factory('modal', ['$http', '$rootScope', '$uibModal', '$window', function ($
                     controller: 'ModalController',
                     scope: $scope
                 });
-                modalInstance.result.then(function (res) {
+                return modalInstance.result.then(function (res) {
+                    return res;
                 });
             } catch (error) {
                 return error;
@@ -76,8 +77,15 @@ app.factory('modal', ['$http', '$rootScope', '$uibModal', '$window', function ($
     };
 }]);
 
-app.controller('ModalController', function ($scope, $uibModalInstance, $uibModal, query, $window) {
+app.controller('ModalController', function ($scope, $uibModalInstance, $interval, $uibModal, query, $window) {
     // $scope.modalUserGroup = angular.copy(scope.showId);
+
+    var interval = 1000; //in milliseconds
+    var intervalPromise = $interval(polling, 1000); // SET TIME
+    function polling() {
+        $scope.sumE = JSON.parse($window.sessionStorage.getItem("countMax"));
+    }
+
     $scope.modal = true;
     $scope.showId = JSON.parse($window.sessionStorage.getItem("showId"));
     $scope.cancel = function () {

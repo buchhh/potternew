@@ -83,31 +83,35 @@ app.factory('query', ['$http', '$rootScope', function ($http, $rootScope) {
 }]);
 
 app.controller('indexController', function ($scope, $http, $window, $interval, $document, query, $location, modal) {
-    // // SET TIME TO EVENT =========================================
+    // // SET TIME TO EVENT ========================================
+    // debugger
     var interval = 1000; //in milliseconds
     var intervalPromise = $interval(polling, 5000); // SET TIME
     function polling() {
+        console.log($scope.api);
         sql = [];
         if (sessionUser && sessionUser.member_id) {
             sql.push("SELECT * FROM `member` WHERE member_id = '" + sessionUser.member_id + "' LIMIT 1");
         }
         sql.push("SELECT * FROM `potter_job` where status = '1'");
+        $scope.countMax = ($scope.sumE ? $scope.sumE : ( JSON.parse($window.sessionStorage.getItem("countMax")) ? JSON.parse($window.sessionStorage.getItem("countMax")) : 0 ));
+        $window.sessionStorage.setItem("countMax", $scope.countMax);
         query.sqll(sql).then(function (response) {
             var user = response[0].data[0].member_count;
             $scope.userid = response[0].data[0].member_id;
+            $scope.type = response[0].data[0].member_type;
             var db = response[1].data.length;
-            // debugger
             if (db > user) {
                 $scope.sumE = (parseInt(db) - parseInt(user));
                 $scope.count = parseInt(user) + parseInt($scope.sumE);
                 statusNewData = JSON.parse($window.sessionStorage.getItem("newData"));
-                // debugger
-                if (!statusNewData && !$scope.api) {
-
+                var job = $location.$$path.split("/");
+                job = job[1];
+                if (!statusNewData && job != 'job' && $scope.type == 'admin') {
                     var json = { status: 'true' }
                     $window.sessionStorage.setItem("newData", JSON.stringify(json));
                     modal.newData($scope).then(function (response) {
-                        // debugger
+                        debugger
                     });
                 }
             }

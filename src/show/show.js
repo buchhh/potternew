@@ -1,5 +1,6 @@
 app.controller('showController', function ($scope, $http, $location, $route, $routeParams, $window, query, modal) {
     // $scope.id = $routeParams.id;
+    $scope.api = 'show';
     $scope.dataSet = {};
     $scope.dataSet.name = '';
     $scope.dataSet.test = '';
