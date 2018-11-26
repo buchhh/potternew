@@ -1,6 +1,6 @@
 {
     "database": {
-        "hostname": "127.0.0.1",
+        "hostname": "localhost",
         "post": "3306",
         "username": "root",
         "password": "",
