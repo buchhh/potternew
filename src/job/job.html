@@ -1,0 +1,129 @@
+<ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">จัดการข้อมูลการจอง</a></li>
+        <li class="breadcrumb-item active">โปรแกรมจองรถนั่ง รถนอน</li>
+</ol>
+<div class="col-md-12">
+        <h1 class="page-header">โปรแกรมจองรถนั่ง รถนอน</h1>
+</div>
+<div ng-controller="jobController">
+        <!-- -----------------------------------------------------------DEPARTMENT-------------------------------------------------------------------------------------- -->
+        <div class="panel panel-default">
+                <div class="panel-body">
+                        <h4>แผนก</h4>
+                        <!-- <div class="row"> -->
+                        <div class="col-md-12">
+                                <br>
+                                <div class="row">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-2" ng-click="img1ST=true;setImg('แผนกกายภาพบำบัด')"><img
+                                                        class="img-a" width="100%" src="{{img1}}"></div>
+                                        <div class="col-md-2" ng-click="img2ST=true;setImg('ตรวจสุขภาพ')"><img class="img-a"
+                                                        width="100%" src="{{img2}}"></div>
+                                        <div class="col-md-2" ng-click="img3ST=true;setImg('แผนกกุมารเวชกรรม')"><img
+                                                        class="img-a" width="100%" src="{{img3}}"></div>
+                                        <div class="col-md-2" ng-click="img4ST=true;setImg('หอผู้ป่วยในชั้น 4')"><img
+                                                        class="img-a" width="100%" src="{{img4}}"></div>
+                                        <div class="col-md-2" ng-click="img5ST=true;setImg('หอผู้ป่วยสามัญชาย')"><img
+                                                        class="img-a" width="100%" src="{{img5}}"></div>
+                                        <div class="col-md-1"></div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                        <div class="col-md-1"> </div>
+                                        <div class="col-md-2" ng-click="img6ST=true;setImg('หอผู้ป่วยสามัญหญิง')"><img
+                                                        class="img-a" width="100%" src="{{img6}}"></div>
+                                        <div class="col-md-2" ng-click="img7ST=true;setImg('หอผู้ป่วยแม่หลังคลอด')"><img
+                                                        class="img-a" width="100%" src="{{img7}}"></div>
+                                        <div class="col-md-2" ng-click="img8ST=true;setImg('แผนกห้องคลอด')"><img class="img-a"
+                                                        width="100%" src="{{img8}}"></div>
+                                        <div class="col-md-2" ng-click="img9ST=true;setImg('แผนกผู้ป่วยวิกฤติ')"><img
+                                                        class="img-a" width="100%" src="{{img9}}"></div>
+                                        <div class="col-md-2" ng-click="img10ST=true;setImg('แผนกห้องผ่าตัด')"><img
+                                                        class="img-a" width="100%" src="{{img10}}"></div>
+                                        <div class="col-md-1"> </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                        <div class="col-md-2"> </div>
+                                        <div class="col-md-2" ng-click="img11ST=true;setImg('คลินิก NCD')"><img class="img-a"
+                                                        width="100%" src="{{img11}}"></div>
+                                        <div class="col-md-2" ng-click="img12ST=true;setImg('แผนกทันตกรรม')"><img class="img-a"
+                                                        width="100%" src="{{img12}}"></div>
+                                        <div class="col-md-2" ng-click="img13ST=true;setImg('แผนกผู้ป่วยนอก')"><img
+                                                        class="img-a" width="100%" src="{{img13}}"></div>
+                                        <div class="col-md-2" ng-click="img14ST=true;setImg('แผนกห้องฉุกเฉิน')"><img
+                                                        class="img-a" width="100%" src="{{img14}}"></div>
+                                        <div class="col-md-2"> </div>
+                                </div>
+                                <br>
+                        </div>
+                        <!-- -----------------------------------------------------------DEPARTMENT-------------------------------------------------------------------------------------- -->
+                        <br>
+                        <!-- </div> -->
+                </div>
+        </div>
+        <div class="panel panel-default">
+                <div class="panel-body">
+                        <h4>รายการจอง</h4>
+                        <!-- -----------------------------------------------------------job-------------------------------------------------------------------------------------- -->
+                        <br>
+                        <div class="row">
+                                <div class="col-md-1"> </div>
+                                <div class="col-md-2" ng-click="img15ST=true;setImg1('รถนั่ง')"><img class="img-a"
+                                                width="100%" src="{{img15}}"></div>
+                                <div class="col-md-2" ng-click="img16ST=true;setImg1('รถนอน')"><img class="img-a" width="100%"
+                                                src="{{img16}}"></div>
+                                <div class="col-md-2" ng-click="img17ST=true;setImg1('รถนั่ง+อ๊อกซิเจน')"><img class="img-a"
+                                                width="100%" src="{{img17}}"></div>
+                                <div class="col-md-2" ng-click="img18ST=true;setImg1('รถนอน+อ๊อกซิเจน')"><img class="img-a"
+                                                width="100%" src="{{img18}}"></div>
+                                <div class="col-md-2" ng-click="img19ST=true;setImg1('เจ้าหน้าที่')"><img class="img-a"
+                                                width="100%" src="{{img19}}"></div>
+                                <div class="col-md-1"> </div>
+                        </div>
+                        <!-- -----------------------------------------------------------job-------------------------------------------------------------------------------------- -->
+                </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3"><input type="radio" name="id" ng-click="radio('id')" checked> :ค้นหาจากรหัส</div>
+                <div class="col-md-3"><input type="radio" name="id" ng-click="radio('name')"> :ค้นหาจากชื่อ</div>
+                <div class="col-md-3"></div>
+        </div>
+        <br>
+        <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-3">
+                        <input ng-disabled="chkRadio=='name'" type="text" class="form-control" ng-model="id"
+                                ng-keypress="checkKeyId($event)">
+                        <p ng-if="Msg" style="color:red">{{Msg}}</p>
+                </div>
+                <div class="col-md-3">
+                        <input ng-disabled="chkRadio=='id'" type="text" ng-model="ngModelOptionsSelected"
+                                ng-model-options="modelOptions" uib-typeahead="state for state in nameE | filter:$viewValue | limitTo:8"
+                                class="form-control" ng-keypress="checkKeyName($event)">
+                </div>
+                <div class="col-md-3">
+                        <!-- <input type="checkbox" ng-model="urgent"> ด่วน -->
+                        <button ng-click="bntcheck()" class="btn btn-info">ค้นหา</button>
+                </div>
+        </div>
+        <br>
+        <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><input type="text" class="form-control" ng-model="showName" disabled></div>
+                <div class="col-md-4"> 
+                <a href="" ng-click="urgent = true"><img ng-show="!urgent" src="img/5.jpg" width="10px" alt=""></a>
+                <a href="" ng-click="urgent = false"><img ng-show="urgent" src="img/6.jpg" width="10px" alt=""></a>
+                </div>
+        </div>
+        <br>
+        <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"><button ng-click="save()" class="btn btn-success">ตกลง</button></div>
+                <div class="col-md-5"></div>
+        </div>
+        <br><br><br><br><br>
+</div>

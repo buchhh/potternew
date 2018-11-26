@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>โรงพยาบาลเมืองพัทยา</title>
+    <link href="../lib/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="../css.css">
+</head>
+
+<body ng-app="app" ng-controller="loginController" style="
+background-image: url('../img/6.jpg'); 
+background-repeat: no-repeat, repeat;
+background-size: cover;
+background-color:hsla(209, 100%, 72%, 0.2);
+">
+    <div class="row">
+        <div class="wrapper">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Login</h2><br>
+                <input type="text" class="form-control" placeholder="ชื่อผู้ใช้" required="" ng-model="user">
+                <input type="password" class="form-control" placeholder="รหัสผ่าน" required="" ng-model="pwd">
+                <label class="checkbox">
+                    <input type="checkbox" name="rememberMe"> Remember me
+                </label>
+                <button class="btn btn-lg btn-primary btn-block" ng-click="submit();">Login</button>
+                <div ng-if="statusLogin == 'false'">
+                    <h5 class="color-red"> {{messageError}}</h5>
+                </div>
+                <div ng-if="statusLogin == 'req'">
+                    <h5 class="color-red"> {{messageError}}</h5>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="../lib/moment/moment.js"></script>
+<script src="../lib/angular/angular.js"></script>
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular/angular-route.js"></script>
+<script src="../lib/bootstrap/js/ui-bootstrap.min.js"></script>
+<script src="../lib/jquery/jquery-1.12.0.min.js"></script>
+<script src="../lib/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="login.js"></script>
+<script src="../modal/modal.js"></script>
+

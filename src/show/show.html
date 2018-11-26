@@ -1,0 +1,73 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="">จัดการข้อมูลการจอง</a></li>
+    <li class="breadcrumb-item active">ข้อมูลการจอง</li>
+</ol>
+<div ng-controller="showController">
+    <div class="col-md-12">
+        <h1 class="page-header">ข้อมูลการจอง</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-9"> {{offset+1}} - {{limit*row}} of {{count}}</div>
+                <div class="col-md-3" style="float:right;padding-bottom:10px;"><input type="text" style="text-align:right;"
+                        ng-model="searchName" class="form-control" ng-keyup="getData('','',searchName)" placeholder="ค้นหา ... "></div><br><br>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th style="width : 180px;"><a ng-click="getData('S.job_id','','')">รหัสการจอง</a></th>
+                            <th style="width : 170px;"><a ng-click="getData('S.docdate','','')">วัน/เดือน/ปี</a></th>
+                            <th><a ng-click="getData('S.ward','','')">แผนก</a></th>
+                            <th><a ng-click="getData('S.job','','')">รายการจอง</a></th>
+                            <th><a ng-click="getData('N.name_ps','','')">ชื่อผู้จอง</a></th>
+                            <th><a ng-click="getData('S.recname','','')">ชื่อผู้รับรถ</a></th>
+                            <th><a ng-click="getData('S.jobname','','')">ชื่อผู้ปฎิบัติงาน</a></th>
+                            <th><a ng-click="getData('J.status_name','','')">สถานะ</a></th>
+                            <th ng-if="usernameType == 'Admin'"><a ng-click="getData('S.status','','')">อัพเดท</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in data" ng-class="item.potter == '1' ? 'color-red' : '' ">
+                            <th>{{offset+($index+1)}}</th>
+                            <th>{{item.job_id}}
+                                <span ng-if="item.status == '1'" class="label label-success">New</span>
+                                <span ng-if="item.potter_now == '1'" class="label label-danger">ด่วน</span>
+                            </th>
+                            <td>{{item.docdate}}</td>
+                            <td>{{item.ward}}</td>
+                            <td>{{item.job}}</td>
+                            <td>{{item.name_ps}}</td>
+                            <td>{{nameSearch(item.recname)}}</td>
+                            <td>{{nameSearch(item.jobname)}}</td>
+                            <td>{{item.status_name}}</td>
+                            <td ng-if="usernameType == 'Admin'">
+                                <div ng-if="item.status == '1'"><button class="btn btn-primary btn-sm" ng-click="subStatus(item.job_id)">ยืนยันการจอง</button></div>
+                                <div ng-if="item.status == '2'"><button class="btn btn-warning btn-sm" ng-click="finStatus(item.job_id)">รับผู้ป่วย</button></div>
+                                <div ng-if="item.status == '3'"><button class="btn btn-success btn-sm" ng-click="success(item.job_id)">เรียบร้อย</button></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="Page navigation" style="float:right;">
+                <ul class="pagination">
+                    <li ng-class="row <= 1 ? 'disabled' : '' ">
+                        <a ng-click="getData('',1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li ng-repeat="r in rowCount track by $index" ng-click="getData('',r)" ng-class=" row == r ? 'active' : '' "><a>{{r}}</a></li>
+                    <li ng-class=" row == rowCount.length ? 'disabled' : '' ">
+                        <a ng-click="getData('',rowCount.length)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>

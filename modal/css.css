@@ -1,0 +1,50 @@
+.center {
+    text-align:center;
+    float: center;
+}
+
+.right {
+    text-align:right;
+    float: right;
+}
+
+.left {
+    text-align:left;
+    float: left;
+}
+
+.background-index {
+    background-color: #888;
+}
+
+.background-home {
+    background-image: url("green.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.backgroundjob {
+    background-image:url("line1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu {
+    padding-top: 10px; 
+    background-color: whitesmoke;
+    height: -webkit-fill-available; 
+    max-height: 100%;
+}
+
+.img-a {
+    cursor: pointer;
+}
+
+.br-top {
+    margin-top:30px;
+}
+
+.bg-header {
+    background-color:yellowgreen;padding: 10px;
+}

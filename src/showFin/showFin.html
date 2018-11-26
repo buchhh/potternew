@@ -1,0 +1,51 @@
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="">จัดการข้อมูลการจอง</a></li>
+    <li class="breadcrumb-item active">รายงานข้อมูลการปฎิบัติงาน</li>
+</ol>
+<div ng-controller="showFinController">
+    <div class="col-md-12">
+        <h1 class="page-header">รายงานข้อมูลการปฎิบัติงาน</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2" style="text-align:left;"><input type="date" class="form-control" ng-model="dateS"></div>
+                <div class="col-md-2" style="text-align:left;"><input type="date" class="form-control" ng-model="dateE"></div>
+                <div class="col-md-2"><button class="btn btn-info" ng-click="getData()">search</button></div>
+                <div class="col-md-3"></div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2"><input type="text" ng-model="searchName" class="form-control" placeholder="ค้นหา..."></div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">รหัสการจอง</th>
+                        <th scope="col">วัน/เดือน/ปี</th>
+                        <th scope="col">แผนก</th>
+                        <th scope="col">รายการจอง</th>
+                        <th scope="col">ชื่อผู้จอง</th>
+                        <th scope="col">ชื่อผู้ปฎิบัติงาน</th>
+                        <th scope="col">สถานะ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in dataT | filter : searchName">
+                        <th>{{$index+1}}</th>
+                        <th scope="row">{{item.job_id}}</th>
+                        <td>{{item.docdate}}</td>
+                        <td>{{item.ward}}</td>
+                        <td>{{item.job}}</td>
+                        <td>{{item.name_ps}}</td>
+                        <td>{{nameSearch(item.jobname)}}</td>
+                        <td ng-class="item.status == '4' ? 'color-green' : '' ">{{item.status_name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

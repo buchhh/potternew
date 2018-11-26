@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>โรงพยาบาลเมืองพัทยา</title>
+    <link rel="stylesheet" href="./css.css">
+    <link href="lib/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/template/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="lib/template/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="lib/template/vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="lib/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-app="app" ng-controller="indexController">
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;">
+            <!-- MENU-HEADER ======================================================================= -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">
+                    <div style="text-align: center;">
+                        <span style="color:#3577be;">โรงพยาบาลเมืองพัทยา</span> : <span style="color:#bbae82;">PATTAYA CITY HOSPITAL</span>
+                    </div>
+                </a>
+            </div>
+            <!-- MENU-HEADER ======================================================================= -->
+            <!-- MENU-TOP ========================================================================== -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href=""><i class="fa fa-user fa-fw"></i> โปรไฟร์ของคุณ</a>
+                        </li>
+                        <li><a href=""><i class="fa fa-gear fa-fw"></i> ตั่งค่า</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="" ng-click="checkout()"><i class="fa fa-sign-out fa-fw"></i> ออกจากระบบ</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- MENU-TOP ========================================================================== -->
+            <!-- MENU-SIDE ========================================================================= -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <div style="text-align: center;"><img src="img/h.png" alt="" width="100%"><span style="padding-left:10px;">
+                                        : {{username}} : </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> หน้าหลัก</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-table fa-fw"></i> จัดการข้อมูลการจอง<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#!/job">จองรถนั่งรถนอน</a></li>
+                                <li><a href="#!/show">ข้อมูลการจองรับรถ</a></li>
+                                <li><a href="#!/showFin">รายงานข้อมูลการปฎิบัติงาน</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> รายงาน</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- MENU-SIDE ========================================================================= -->
+        </nav>
+        <!-- MODULE-ROUTE ====================================================================== -->
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12" style="padding-top:20px;"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ng-view></ng-view>
+                </div>
+            </div>
+        </div>
+        <!-- MODULE-ROUTE ====================================================================== -->
+    </div>
+</body>
+</html>
+
+<script src="lib/chart/canvasjs.min.js"></script>
+<script src="lib/moment/moment.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular/angular-route.js"></script>
+<script src="lib/bootstrap/js/ui-bootstrap.min.js"></script>
+<script src="lib/template/vendor/jquery/jquery.min.js"></script>
+<script src="lib/template/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/template/vendor/metisMenu/metisMenu.min.js"></script>
+<script src="lib/template/vendor/raphael/raphael.min.js"></script>
+<script src="lib/template/dist/js/sb-admin-2.js"></script>
+<script src="js.js"></script>
+<script src="src/home/home.js"></script>
+<script src="src/job/job.js"></script>
+<script src="src/show/show.js"></script>
+<script src="src/showFin/showFin.js"></script>
+<script src="modal/modal.js"></script>
