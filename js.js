@@ -83,9 +83,6 @@ app.factory('query', ['$http', '$rootScope', function ($http, $rootScope) {
 }]);
 
 app.controller('indexController', function ($scope, $http, $window, $interval, $document, query, $location, modal) {
-    // var date = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-    // var audio = new Audio('sound/1.mp3');
-    // audio.play();
     // // SET TIME TO EVENT =========================================
     var interval = 1000; //in milliseconds
     var intervalPromise = $interval(polling, 5000); // SET TIME
@@ -106,7 +103,7 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
                 statusNewData = JSON.parse($window.sessionStorage.getItem("newData"));
                 // debugger
                 if (!statusNewData && !$scope.api) {
-                  
+
                     var json = { status: 'true' }
                     $window.sessionStorage.setItem("newData", JSON.stringify(json));
                     modal.newData($scope).then(function (response) {
@@ -114,18 +111,13 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
                     });
                 }
             }
-            // var audio = new Audio('sound/1.mp3');
-            // audio.play();
-            // console.log(response.data.length);
         })
-        // console.log('[' + moment(new Date()).format('YYYY-MM-DD HH:mm:ss') + '] : TEST ยิง API ทุกๆ 1 วินาที ');
     }
     // // SET TIME TO EVENT =========================================
     // modal.success();
     $scope.config;
     $http.get("config/config.json").then(function (res) {
         $scope.config = res.data
-
         checkSessionLogin();
     });
     var checkSessionLogin = function () {
@@ -133,7 +125,6 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
         if (sessionUser) {
             $scope.username = sessionUser && sessionUser.member_user ? sessionUser.member_user : '';
             $scope.usernameType = sessionUser && sessionUser.member_type ? sessionUser.member_type : '';
-
         } else {
             window.location.href = '/' + $scope.config.project_name + '/login';
         }
@@ -149,20 +140,12 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
             $('.navbar-nav').toggleClass('slide-in');
             $('.side-body').toggleClass('body-slide-in');
             $('#search').removeClass('in').addClass('collapse').slideUp(200);
-
-            /// uncomment code for absolute positioning tweek see top comment in css
-            //$('.absolute-wrapper').toggleClass('slide-in');
-
         });
 
         // Remove menu for searching
         $('#search-trigger').click(function () {
             $('.navbar-nav').removeClass('slide-in');
             $('.side-body').removeClass('body-slide-in');
-
-            /// uncomment code for absolute positioning tweek see top comment in css
-            //$('.absolute-wrapper').removeClass('slide-in');
-
         });
     });
 });
