@@ -94,14 +94,15 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
             sql.push("SELECT * FROM `member` WHERE member_id = '" + sessionUser.member_id + "' LIMIT 1");
         }
         sql.push("SELECT * FROM `potter_job` where status = '1'");
-        $scope.countMax = ($scope.sumE ? $scope.sumE : ( JSON.parse($window.sessionStorage.getItem("countMax")) ? JSON.parse($window.sessionStorage.getItem("countMax")) : 0 ));
-        $window.sessionStorage.setItem("countMax", $scope.countMax);
+        // $scope.countMax = ($scope.sumE ? $scope.sumE : ( JSON.parse($window.sessionStorage.getItem("countMax")) ? JSON.parse($window.sessionStorage.getItem("countMax")) : 0 ));
+        // $window.sessionStorage.setItem("countMax", $scope.countMax);
         query.sqll(sql).then(function (response) {
             var user = response[0].data[0].member_count;
             $scope.userid = response[0].data[0].member_id;
             $scope.type = response[0].data[0].member_type;
             var db = response[1].data.length;
             if (db > user) {
+
                 $scope.sumE = (parseInt(db) - parseInt(user));
                 $scope.count = parseInt(user) + parseInt($scope.sumE);
                 statusNewData = JSON.parse($window.sessionStorage.getItem("newData"));
@@ -111,7 +112,7 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
                     var json = { status: 'true' }
                     $window.sessionStorage.setItem("newData", JSON.stringify(json));
                     modal.newData($scope).then(function (response) {
-                        debugger
+                        // debugger
                     });
                 }
             }

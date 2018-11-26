@@ -81,9 +81,10 @@ app.controller('ModalController', function ($scope, $uibModalInstance, $interval
     // $scope.modalUserGroup = angular.copy(scope.showId);
 
     var interval = 1000; //in milliseconds
-    var intervalPromise = $interval(polling, 1000); // SET TIME
+    var intervalPromise = $interval(polling, 100); // SET TIME
     function polling() {
-        $scope.sumE = JSON.parse($window.sessionStorage.getItem("countMax"));
+
+        // $scope.sumE = JSON.parse($window.sessionStorage.getItem("countMax"));
     }
 
     $(document).ready(function () {
