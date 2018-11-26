@@ -85,6 +85,7 @@ app.factory('query', ['$http', '$rootScope', function ($http, $rootScope) {
 app.controller('indexController', function ($scope, $http, $window, $interval, $document, query, $location, modal) {
     // // SET TIME TO EVENT ========================================
     // debugger
+    $window.sessionStorage.removeItem("newData");
     var interval = 1000; //in milliseconds
     var intervalPromise = $interval(polling, 5000); // SET TIME
     function polling() {
@@ -113,6 +114,7 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
                     $window.sessionStorage.setItem("newData", JSON.stringify(json));
                     modal.newData($scope).then(function (response) {
                         // debugger
+                        $window.location.reload();
                     });
                 }
             }
