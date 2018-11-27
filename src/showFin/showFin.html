@@ -30,6 +30,7 @@
                         <th scope="col">รายการจอง</th>
                         <th scope="col">ชื่อผู้จอง</th>
                         <th scope="col">ชื่อผู้ปฎิบัติงาน</th>
+                        <th scope="col">เวลาปฎิบัติงาน</th>
                         <th scope="col">สถานะ</th>
                     </tr>
                 </thead>
@@ -42,7 +43,7 @@
                         <td>{{item.job}}</td>
                         <td>{{item.name_ps}}</td>
                         <td>{{nameSearch(item.jobname)}}</td>
-                        <td>{{dateDiff(START,END)}}</td>
+                        <td>{{dateDiff(item.recdate,item.finishdate)}}</td>
                         <td ng-class="item.status == '4' ? 'color-green' : '' ">{{item.status_name}}</td>
                     </tr>
                 </tbody>
