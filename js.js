@@ -87,7 +87,7 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
     // debugger
     $window.sessionStorage.removeItem("newData");
     var interval = 1000; //in milliseconds
-    var intervalPromise = $interval(polling, 5000); // SET TIME
+    var intervalPromise = $interval(polling, 25000); // SET TIME
     function polling() {
         console.log($scope.api);
         sql = [];
