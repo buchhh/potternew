@@ -42,6 +42,7 @@
                         <td>{{item.job}}</td>
                         <td>{{item.name_ps}}</td>
                         <td>{{nameSearch(item.jobname)}}</td>
+                        <td>{{dateDiff(START,END)}}</td>
                         <td ng-class="item.status == '4' ? 'color-green' : '' ">{{item.status_name}}</td>
                     </tr>
                 </tbody>
