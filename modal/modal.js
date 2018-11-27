@@ -160,7 +160,7 @@ app.controller('ModalController', function ($scope, $uibModalInstance, $interval
 
     $scope.clearData = function (id, count) {
         $scope.modal = false;
-        sql = "UPDATE `member` SET `member_count` = '" + count + "' WHERE `member`.`member_id` = '" + id + "';"
+        // sql = "UPDATE `member` SET `member_count` = '" + count + "' WHERE `member`.`member_id` = '" + id + "';"
         query.sql(sql).then(function (response) {
             if (response.status == 200) {
                 $uibModalInstance.close('200');
