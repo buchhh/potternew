@@ -82,6 +82,48 @@ app.factory('query', ['$http', '$rootScope', function ($http, $rootScope) {
     };
 }]);
 
+app.factory('date', ['$http', '$rootScope', function ($http, $rootScope) {
+    return {
+        diff: function (START, END) {
+            var data = '';
+            var startdate = moment(START);
+            var enddate = moment(END);
+            if (startdate.isValid() === true && enddate.isValid() === true) {
+                // YEAR ====================================================================
+                var years = enddate.diff(startdate, 'years');
+                // MONTH ===================================================================
+                startdate.add(years, 'years');
+                var months = enddate.diff(startdate, 'months')
+                // DAY =====================================================================
+                startdate.add(months, 'months');
+                var days = enddate.diff(startdate, 'days')
+                // HOUR ====================================================================
+                startdate.add(days, 'days')
+                var hours = enddate.diff(startdate, 'hours')
+                // MINUTES =================================================================
+                startdate.add(hours, 'hours')
+                var minutes = enddate.diff(startdate, 'minutes')
+                // SECOUND =================================================================       
+                startdate.add(minutes, 'minutes')
+                var seconds = enddate.diff(startdate, 'seconds')
+                // TIME ====================================================================
+                if (hours >= 0 && minutes >= 0 && seconds >= 0) {
+                    hours = hours.toString();
+                    minutes = minutes.toString();
+                    seconds = seconds.toString();
+                    data =
+                        (hours && hours.length > 1 ? hours : '0' + hours) + ":" +
+                        (minutes && minutes.length > 1 ? minutes : '0' + minutes) + ":" +
+                        (seconds && seconds.length > 1 ? seconds : '0' + seconds);
+                }
+            }
+            return data;
+        }
+    };
+}]);
+
+
+
 app.controller('indexController', function ($scope, $http, $window, $interval, $document, query, $location, modal) {
     // // SET TIME TO EVENT ========================================
     // debugger
