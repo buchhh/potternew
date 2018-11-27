@@ -1,4 +1,4 @@
-app.controller('showFinController', function ($scope, $http, $location, $route, $routeParams, query, modal) {
+app.controller('showFinController', function ($scope, $http, $location, $route, $routeParams, query, modal,date) {
     // $scope.id = $routeParams.id;
     $scope.api = 'showFin';
     $scope.dataSet = {};
@@ -39,6 +39,12 @@ app.controller('showFinController', function ($scope, $http, $location, $route, 
             }
         }
         return data;
+    }
+
+    $scope.dateDiff = function (START,END) {
+        var data
+        data = date.diff(START,END);
+        return data
     }
 
     $scope.subStatus = function (sid) {
