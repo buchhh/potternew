@@ -122,30 +122,49 @@ app.factory('date', ['$http', '$rootScope', function ($http, $rootScope) {
     };
 }]);
 
+app.factory('gen', ['$http', '$rootScope', function ($http, $rootScope) {
+    return {
+        id: function (max) {
+             // ==================================================
+             var str = max; // ดาต้าที่จะเอามา run ใหม่
+             var len = max.length; // จำนวนข้อมูล id
+             var res = str.substr(1); // ค่าที่มากที่สุด id
+             var char = str.substr(0, 1); // ตัวอักษรตัวแรก id
+             res = parseInt(res) + 1
+             var len2 = res.toString()
+             len1 = char.length
+             len2 = len2.length
+             sumLen = len1 + len2;
+             sumMax = len - sumLen;
+             var data = char;
+             for (let i = 0; i < sumMax; i++) {
+                 data += '0';
+             }
+             data += res;
+             // ==================================================
+            return data;
+        }
+    };
+}]);
 
-
-app.controller('indexController', function ($scope, $http, $window, $interval, $document, query, $location, modal) {
+app.controller('indexController', function ($scope, $http, $window, $interval, $document, query, $location, modal,gen) {
     // // SET TIME TO EVENT ========================================
-    // debugger
     $window.sessionStorage.removeItem("newData");
-    var interval = 1000; //in milliseconds
+    var interval = 1000; // in milliseconds
     var intervalPromise = $interval(polling, 25000); // SET TIME
     function polling() {
-        console.log($scope.api);
+        // console.log($scope.api);
         sql = [];
         if (sessionUser && sessionUser.member_id) {
             sql.push("SELECT * FROM `member` WHERE member_id = '" + sessionUser.member_id + "' LIMIT 1");
         }
         sql.push("SELECT * FROM `potter_job` where status = '1'");
-        // $scope.countMax = ($scope.sumE ? $scope.sumE : ( JSON.parse($window.sessionStorage.getItem("countMax")) ? JSON.parse($window.sessionStorage.getItem("countMax")) : 0 ));
-        // $window.sessionStorage.setItem("countMax", $scope.countMax);
         query.sqll(sql).then(function (response) {
             var user = response[0].data[0].member_count;
             $scope.userid = response[0].data[0].member_id;
             $scope.type = response[0].data[0].member_type;
             var db = response[1].data.length;
             if (db > user) {
-
                 $scope.sumE = (parseInt(db) - parseInt(user));
                 $scope.count = parseInt(user) + parseInt($scope.sumE);
                 statusNewData = JSON.parse($window.sessionStorage.getItem("newData"));
@@ -155,7 +174,6 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
                     var json = { status: 'true' }
                     $window.sessionStorage.setItem("newData", JSON.stringify(json));
                     modal.newData($scope).then(function (response) {
-                        // debugger
                         $window.location.reload();
                     });
                 }

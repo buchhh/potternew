@@ -1,4 +1,4 @@
-app.controller('jobController', function ($scope, $uibModal, $http, $location, query, modal) {
+app.controller('jobController', function ($scope, $uibModal, $http, $location, query, modal, gen) {
     $scope.chkRadio = 'id';
     $scope.api = 'job';
     $scope.reset = function () {
@@ -61,21 +61,18 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
     }
 
     $scope.checkKeyId = function (event) {
-        // debugger
         if (event.keyCode == '13') {
             $scope.searchName();
         }
     }
 
     $scope.checkKeyName = function (event) {
-        // debugger
         if (event.keyCode == '13') {
             $scope.chkSearchName($scope.ngModelOptionsSelected);
         }
     }
 
-    $scope.bntcheck = function(){
-        // debugger
+    $scope.bntcheck = function () {
         if ($scope.chkRadio == 'id') {
             $scope.searchName();
         } else {
@@ -84,7 +81,6 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
     }
 
     $scope.searchName = function () {
-        // debugger
         name = $scope.id ? $scope.id : '';
         $scope.Msg = $scope.id ? null : 'ไม่มีข้อมูล';
         // มันคือ query ที่จะเอา id ไปค้นหาชื่อมาโชว์
@@ -96,7 +92,7 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
                         $scope.Msg = 'ไม่มีข้อมูล'
                     } else {
                         $scope.Msg = null
-                    } 
+                    }
                     $scope.showName = response.data[0].name_ps;
                     $scope.name = response.data[0].pch_id;
                 } else {
@@ -110,30 +106,12 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
     }
 
     $scope.save = function () {
-        // debugger
         sql = "SELECT job_id FROM `potter_job`order by job_id desc limit 1";
         if ($scope.dataDepartment && $scope.dataJob && $scope.showName) {
             Promise.all([query.sql(sql)]).then(function (res) {
-                // debugger
                 max = res[0].data && res[0].data[0].job_id ? res[0].data[0].job_id : null;
                 if (max) {
-                    // ==================================================
-                    var str = max;// ดาต้าที่จะเอามา run ใหม่
-                    var len = max.length; // จำนวนข้อมูล id
-                    var res = str.substr(1)// ค่าที่มากที่สุด id
-                    var char = str.substr(0, 1)// ตัวอักษรตัวแรก id
-                    res = parseInt(res) + 1
-                    var len2 = res.toString()
-                    len1 = char.length
-                    len2 = len2.length
-                    sumLen = len1 + len2;
-                    sumMax = len - sumLen;
-                    var maxID = char;
-                    for (let i = 0; i < sumMax; i++) {
-                        maxID += '0';
-                    }
-                    maxID += res;
-                    // ==================================================
+                    var maxID = gen.id(max);
                 } else {
                     maxID = 'J000000001';
                 }
@@ -147,12 +125,9 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
                     + $scope.dataJob + "', '"
                     + $scope.name + "', '"
                     + $scope.status + "', '"
-                    + now + "');"
-
+                    + now + "');";
                 query.sql(sql).then(function (response) {
-
                     if (response.status == 200) {
-                        //debugger
                         $scope.statusInsert = true;
                         $scope.MsgName = "เรียบร้อย";
                         modal.success($scope);
@@ -174,7 +149,6 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
         $scope.Msg = '';
         $scope.showName = '';
         $scope.chkRadio = type;
-        // debugger
         if (type == 'id') {
             $scope.ngModelOptionsSelected = '';
         } else {
@@ -183,7 +157,6 @@ app.controller('jobController', function ($scope, $uibModal, $http, $location, q
     }
 
     $scope.chkSearchName = function (name) {
-        // debugger
         var data = '';
         if (name && name != '') {
             for (let i = 0; i < $scope.dataName.length; i++) {
