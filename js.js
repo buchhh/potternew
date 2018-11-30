@@ -3,6 +3,7 @@ var app = angular.module('app', ['ngRoute', 'ui.bootstrap']);
 app.config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
 }]);
+
 app.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
@@ -153,7 +154,6 @@ app.controller('indexController', function ($scope, $http, $window, $interval, $
     var interval = 1000; // in milliseconds
     var intervalPromise = $interval(polling, 25000); // SET TIME
     function polling() {
-        // console.log($scope.api);
         sql = [];
         if (sessionUser && sessionUser.member_id) {
             sql.push("SELECT * FROM `member` WHERE member_id = '" + sessionUser.member_id + "' LIMIT 1");
